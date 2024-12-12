@@ -96,9 +96,9 @@ class _HomepageState extends State<Homepage> {
                                 padding: const EdgeInsets.all(10.0),
                                 child: Row(
                                   children: [
-                                    // Planet Image
+
                                     ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10),
                                       child: Image.network(
                                         item['image'],
                                         height: 80,

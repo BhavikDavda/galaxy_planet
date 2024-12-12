@@ -14,7 +14,8 @@ class Detailpage extends StatefulWidget {
 class _DetailpageState extends State<Detailpage> {
   @override
   Widget build(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
     return Scaffold(
       body: Stack(
@@ -23,8 +24,9 @@ class _DetailpageState extends State<Detailpage> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                // image: NetworkImage("https://i.pinimg.com/736x/8a/0e/d2/8a0ed2f012ee4fd971a230c7d6f29360.jpg"),
-                image: NetworkImage("https://st.depositphotos.com/27201292/53650/i/450/depositphotos_536500110-stock-photo-vertical-shot-milky-way-starry.jpg"),
+
+                image: NetworkImage(
+                    "https://st.depositphotos.com/27201292/53650/i/450/depositphotos_536500110-stock-photo-vertical-shot-milky-way-starry.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -38,9 +40,12 @@ class _DetailpageState extends State<Detailpage> {
                     child: Row(
                       children: [
                         IconButton(
-                          onPressed: (){
-                          Navigator.of(context).pop();
-                        }, icon: Icon(Icons.arrow_back),color: Colors.white,),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icon(Icons.arrow_back),
+                          color: Colors.white,
+                        ),
                         Spacer(),
                         Text(
                           'Detail',
@@ -52,28 +57,32 @@ class _DetailpageState extends State<Detailpage> {
                         ),
                         Spacer(),
                         IconButton(
-
                             onPressed: () {
                               var stringJson = jsonEncode(arguments);
-                              List<String> favList = prefs.getStringList('fav') ?? [];
+                              List<String> favList =
+                                  prefs.getStringList('fav') ?? [];
                               if (!favList.contains(stringJson)) {
                                 favList.add(stringJson);
                                 prefs.setStringList('fav', favList);
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("Added to Favorites!")),
+                                  SnackBar(
+                                      content: Text("Added to Favorites!")),
                                 );
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("Already in Favorites!")),
+                                  SnackBar(
+                                      content: Text("Already in Favorites!")),
                                 );
                               }
                             },
-                            icon: Icon(Icons.favorite_border))
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            )),
                       ],
                     ),
                   ),
                 ),
-                // Planet Image
                 Container(
                   margin: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
@@ -173,7 +182,6 @@ class _DetailpageState extends State<Detailpage> {
           ),
         ],
       ),
-
     );
   }
 }
